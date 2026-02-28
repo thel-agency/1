@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thel LLC — B2B Growth Agency</title>
+  <meta name="description" content="Thel LLC is a B2B growth agency specializing in SEO, AEO, paid media, social media, and email marketing for companies with niche target markets." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0a0a0a;
+      --dark:   #111111;
+      --accent: #c8a96e;
+      --accent2: #e8c98e;
+      --light:  #141414;
+      --text:   #d4d4d4;
+      --muted:  #888888;
+      --white:  #f0f0f0;
+      --radius: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,.40);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: #0a0a0a;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    .nav-logo {
+      font-size: 1.35rem; font-weight: 800; letter-spacing: .04em;
+      color: var(--white); text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: #c9d8e8; text-decoration: none;
+      font-size: .9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent); color: var(--white) !important;
+      padding: .45rem 1.15rem; border-radius: 6px;
+      font-weight: 600 !important; transition: background .2s !important;
+    }
+    .nav-cta:hover { background: #a8853e !important; }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, #000000 0%, #0f0f0f 55%, #111111 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 110px 5vw 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 40%, rgba(200,169,110,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 60%, rgba(232,201,142,.07) 0%, transparent 70%);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(200,169,110,.12);
+      border: 1px solid rgba(200,169,110,.35);
+      color: #c8a96e;
+      font-size: .8rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem 1rem; border-radius: 99px;
+      margin-bottom: 1.4rem;
+      position: relative;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900; line-height: 1.15;
+      max-width: 820px; margin: 0 auto 1.4rem;
+      position: relative;
+    }
+
+    #hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #888888;
+      max-width: 640px; margin: 0 auto 2.4rem;
+      position: relative;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #a8853e; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.3);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 88px 5vw; }
+    section:nth-child(even) { background: #111111; }
+
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 800; line-height: 1.2;
+      color: #f0f0f0;
+      max-width: 660px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-top: .75rem;
+    }
+
+    .section-header { margin-bottom: 3rem; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-title,
+    .section-header.center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── NICHE CALLOUT ── */
+    #niche-callout {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 5vw;
+    }
+
+    .callout-box {
+      display: inline-flex; align-items: center; gap: 1.2rem;
+      background: rgba(200,169,110,.08);
+      border: 1px solid rgba(200,169,110,.25);
+      border-radius: var(--radius);
+      padding: 1.4rem 2rem;
+      max-width: 820px;
+      text-align: left;
+    }
+
+    .callout-icon {
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .callout-box strong {
+      display: block; color: var(--white);
+      font-size: 1.05rem; font-weight: 700; margin-bottom: .35rem;
+    }
+
+    .callout-box p { color: #888888; font-size: .95rem; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: #181818;
+      border: 1px solid #2a2a2a;
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    section:nth-child(even) .card { background: #181818; }
+
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.13); }
+
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 6px;
+      border: 1px solid #2a2a2a;
+      background: #111;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .card h3 { font-size: 1.1rem; font-weight: 700; color: #f0f0f0; margin-bottom: .6rem; }
+    .card p  { font-size: .93rem; color: var(--muted); line-height: 1.6; }
+
+    .card ul {
+      list-style: none; margin-top: .9rem;
+    }
+
+    .card ul li {
+      font-size: .88rem; color: var(--muted);
+      padding: .28rem 0;
+      display: flex; align-items: flex-start; gap: .5rem;
+    }
+
+    .card ul li::before {
+      content: '✓';
+      color: var(--accent2);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05em;
+    }
+
+    /* ── EMAIL SECTION ── */
+    .email-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) { .email-layout { grid-template-columns: 1fr; } }
+
+    .tools-row {
+      display: flex; flex-wrap: wrap; gap: .65rem;
+      margin-top: 1.4rem;
+    }
+
+    .tool-badge {
+      background: #1e1e1e;
+      border: 1px solid #2e2e2e;
+      border-radius: 99px;
+      padding: .35rem .9rem;
+      font-size: .82rem; font-weight: 600; color: #c8a96e;
+    }
+
+    .pipeline-steps { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+    .step {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--accent); color: var(--white);
+      font-weight: 800; font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-body strong { display: block; font-weight: 700; color: #f0f0f0; margin-bottom: .2rem; }
+    .step-body span   { font-size: .88rem; color: var(--muted); }
+
+    /* ── FOUNDER ── */
+    .founder-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .founder-layout { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .founder-photo-wrap {
+      position: relative;
+    }
+
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+      display: block;
+      background: #181818;
+    }
+
+    .founder-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+      background: #181818;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+      font-size: .8rem;
+    }
+
+    .founder-linkedin {
+      display: inline-flex; align-items: center; gap: .45rem;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: .85rem; font-weight: 600;
+      transition: opacity .2s;
+    }
+    .founder-linkedin:hover { opacity: .75; }
+
+    .founder-bio h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #f0f0f0;
+      margin-bottom: .25rem;
+    }
+
+    .founder-role {
+      color: var(--accent);
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .founder-bio p {
+      color: var(--muted);
+      font-size: .97rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    /* ── CLIENT LOGOS ── */
+    .clients-strip {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .clients-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .clients-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      align-items: center;
+    }
+
+    .client-logo {
+      display: inline-block;
+      padding: .45rem 1.1rem;
+      border: 1px solid #222;
+      border-radius: 5px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: #666;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+
+    .client-logo:hover {
+      border-color: #3a3a3a;
+      color: #999;
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius);
+      background: #181818;
+      border: 1px solid #2a2a2a;
+      box-shadow: var(--shadow);
+    }
+
+    .why-card .big { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: .3rem; }
+    .why-card p    { font-size: .9rem; color: var(--muted); }
+
+    /* ── CTA BANNER ── */
+    #cta {
+      background: linear-gradient(135deg, #1a1510 0%, #0d0d0d 100%);
+      border-top: 1px solid #2a2a2a;
+      color: var(--white);
+      text-align: center;
+      padding: 80px 5vw;
+    }
+
+    #cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: .8rem; }
+    #cta p  { font-size: 1.05rem; opacity: .88; max-width: 540px; margin: 0 auto 2rem; }
+
+    .btn-white {
+      background: var(--accent); color: #0a0a0a;
+      padding: .9rem 2.2rem; border-radius: 8px;
+      font-weight: 800; font-size: 1rem;
+      text-decoration: none; display: inline-block;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-white:hover { background: #a8853e; opacity: 1; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: #7a95ac;
+      text-align: center;
+      padding: 2.4rem 5vw;
+      font-size: .85rem;
+    }
+    footer strong { color: var(--white); }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Thel<span>.</span></a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#founder">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#cta" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">B2B Growth Agency</div>
+  <h1>We grow B2B businesses in<br/><em>niche, hard-to-reach markets</em></h1>
+  <p>
+    When your entire addressable market is 5,000 facility managers or a handful of
+    procurement leads, generic marketing fails. Thel LLC builds precision growth
+    programs that find, nurture, and convert the right buyers — every time.
+  </p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn-primary">Book a Free Strategy Call</a>
+    <a href="#services" class="btn-outline">See Our Services</a>
+  </div>
+</section>
+
+<!-- NICHE CALLOUT -->
+<div id="niche-callout">
+  <div class="callout-box">
+    <div class="callout-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
+        <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+      </svg>
+    </div>
+    <div>
+      <strong>Built for small total-addressable markets</strong>
+      <p>
+        Selling a specialized industrial product to 4,000 facility managers? Targeting 600
+        regional procurement directors? That's exactly where we thrive. We don't need
+        millions of impressions — we need your 5,000 decision-makers to know exactly who
+        you are and why you're the obvious choice.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header center">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Full-funnel B2B growth, built for your niche</h2>
+    <p class="section-sub">
+      Every channel we run is calibrated for B2B buying cycles, technical products,
+      and audiences that don't respond to consumer tactics.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- SEO / AEO -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </div>
+      <h3>SEO &amp; AEO — Search &amp; Answer Engine Optimization</h3>
+      <p>
+        We get you ranking in Google <em>and</em> in the AI-generated answers your
+        buyers increasingly rely on — even in ultra-niche markets where keyword volume
+        is low but buyer intent is sky-high.
+      </p>
+      <ul>
+        <li>Technical SEO audits &amp; on-page optimization</li>
+        <li>Authoritative content targeting niche buyer queries</li>
+        <li>Structured data &amp; schema for AI answer engines</li>
+        <li>Topical authority in your specific vertical</li>
+        <li>Competitor gap analysis for niche SERPs</li>
+      </ul>
+    </div>
+
+    <!-- PAID MEDIA -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12"/><path d="M6.48 6.88A6 6 0 0 0 6 9v6a6 6 0 0 0 .48 2.12"/>
+          <path d="M18 8.5C18 8.5 22 9 22 12s-4 3.5-4 3.5V8.5z"/>
+          <rect x="2" y="9" width="6" height="6" rx="1"/>
+          <line x1="8" y1="15" x2="6" y2="21"/>
+        </svg>
+      </div>
+      <h3>Paid Media</h3>
+      <p>
+        Precision-targeted paid campaigns that reach the specific job titles,
+        industries, and companies in your market — without wasting budget on
+        irrelevant clicks.
+      </p>
+      <ul>
+        <li>LinkedIn Ads targeting by title, industry &amp; company size</li>
+        <li>Google &amp; Bing search ads for high-intent B2B queries</li>
+        <li>Retargeting sequences for long B2B sales cycles</li>
+        <li>Landing page copy &amp; CRO</li>
+        <li>Full performance reporting &amp; budget optimization</li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+      </div>
+      <h3>B2B Social Media</h3>
+      <p>
+        Strategic presence on the platforms where your actual buyers spend time —
+        building credibility and staying top-of-mind across long B2B sales cycles.
+      </p>
+      <ul>
+        <li>LinkedIn organic strategy, posting &amp; content calendar</li>
+        <li>Reddit community engagement in niche industry subreddits</li>
+        <li>Thought leadership &amp; technical commentary for your vertical</li>
+        <li>DM outreach &amp; connection sequences on LinkedIn</li>
+        <li>Monthly analytics &amp; content performance review</li>
+      </ul>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h3>B2B Email Marketing</h3>
+      <p>
+        End-to-end outbound email programs — from building verified prospect lists to
+        sending, reporting, and managing follow-up sequences until meetings are booked.
+      </p>
+      <ul>
+        <li>Prospect list building with Hunter.io, Apollo &amp; more</li>
+        <li>Multi-touch cold email sequences</li>
+        <li>Deliverability management &amp; inbox placement</li>
+        <li>Reply handling &amp; follow-up automation</li>
+        <li>Weekly reporting on opens, replies &amp; pipeline</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EMAIL DEEP DIVE -->
+<section id="email">
+  <div class="email-layout">
+
+    <div>
+      <div class="section-label">Outbound Email Engine</div>
+      <h2 class="section-title">We build your pipeline — contacts to conversations</h2>
+      <p class="section-sub">
+        We handle everything from sourcing verified contact data to booking meetings
+        on your calendar. You focus on closing; we fill the top of funnel.
+      </p>
+      <div class="tools-row">
+        <span class="tool-badge">Hunter.io</span>
+        <span class="tool-badge">Apollo.io</span>
+        <span class="tool-badge">Instantly</span>
+        <span class="tool-badge">Smartlead</span>
+        <span class="tool-badge">Clay</span>
+        <span class="tool-badge">ZoomInfo</span>
+        <span class="tool-badge">LinkedIn Sales Nav</span>
+      </div>
+    </div>
+
+    <div class="pipeline-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Prospect List Building</strong>
+          <span>We source and verify contacts matching your exact ICP — job title, industry, company size, geography, and technology stack.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Sequence Copywriting</strong>
+          <span>Personalized multi-touch email sequences written for technical B2B buyers — not generic templates.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Send, Deliver &amp; Optimize</strong>
+          <span>We manage domain warming, sending infrastructure, and deliverability so your emails land in the inbox, not spam.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Follow-Ups &amp; Replies</strong>
+          <span>Automated and manual follow-ups handled by us — we respond to interested leads and nurture them until they're ready to talk.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Reporting &amp; Iteration</strong>
+          <span>Weekly dashboards on open rates, reply rates, and meetings booked. We iterate copy and targeting every cycle to improve results.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-layout">
+
+    <div class="founder-photo-wrap">
+      <img src="images/jonathan.jpg" alt="Jonathan Poston" class="founder-photo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="founder-photo-placeholder" style="display:none">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" style="color:#333">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <a href="https://www.linkedin.com/in/jonathanposton/" target="_blank" rel="noopener" class="founder-linkedin">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        linkedin.com/in/jonathanposton
+      </a>
+    </div>
+
+    <div class="founder-bio">
+      <div class="section-label">Founder &amp; Agency Owner</div>
+      <h2>Jonathan Poston</h2>
+      <div class="founder-role">B2B Growth Strategist</div>
+      <p>
+        Jonathan Poston is a B2B marketing strategist with over a decade of experience
+        growing businesses in technical, industrial, and logistics markets — the kinds of
+        niches where generic digital marketing falls flat and deep domain expertise is the
+        only thing that moves the needle.
+      </p>
+      <p>
+        He's led SEO, content, and demand generation for companies ranging from specialty
+        logistics providers to HVAC equipment manufacturers, trucking OEMs, and
+        industrial distributors. His approach is built around one insight: when your
+        addressable market is small, every touchpoint has to count.
+      </p>
+      <p>
+        Thel LLC is the agency he built to bring that precision to more B2B companies
+        who need real pipeline, not vanity metrics.
+      </p>
+
+      <div class="clients-strip">
+        <div class="clients-label">Companies &amp; brands worked with</div>
+        <div class="clients-row">
+          <a href="https://redstagfulfillment.com" target="_blank" rel="noopener" class="client-logo">Red Stag Fulfillment</a>
+          <a href="https://tranetechnologies.com" target="_blank" rel="noopener" class="client-logo">Trane Technologies</a>
+          <a href="https://freightliner.com" target="_blank" rel="noopener" class="client-logo">Freightliner</a>
+          <a href="https://www.demanddetroit.com/engines" target="_blank" rel="noopener" class="client-logo">Demand Detroit Engines</a>
+          <a href="https://getmapleair.com" target="_blank" rel="noopener" class="client-logo">Maple Air</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-header center">
+    <div class="section-label">Why Thel</div>
+    <h2 class="section-title">Focused on B2B. Obsessed with niche markets.</h2>
+    <p class="section-sub">
+      We don't split our attention between B2C campaigns and brand awareness fluff.
+      Every client we work with is a B2B company selling something specific, often
+      technical, to a very defined audience.
+    </p>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="big">100%</div>
+      <p>B2B focus — no consumer campaigns, no brand fluff</p>
+    </div>
+    <div class="why-card">
+      <div class="big">4–6×</div>
+      <p>Channels working together: SEO, AEO, paid, social &amp; email</p>
+    </div>
+    <div class="why-card">
+      <div class="big">Niche</div>
+      <p>Experts at marketing to small, specific buyer audiences</p>
+    </div>
+    <div class="why-card">
+      <div class="big">Full</div>
+      <p>End-to-end execution — strategy, build, send, report, optimize</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2>Ready to grow your B2B pipeline?</h2>
+  <p>
+    Tell us who your buyers are. We'll show you exactly how we'd reach them —
+    whether there are 500 of them or 50,000.
+  </p>
+  <a href="https://calendly.com/thelagency" target="_blank" rel="noopener" class="btn-white">Book a Free Strategy Call →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Thel LLC</strong> &mdash; B2B Growth Agency</p>
+  <p style="margin-top:.5rem;">
+    &copy; <span id="yr"></span> Thel LLC. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
