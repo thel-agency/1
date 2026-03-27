@@ -1,795 +1,1120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thel LLC — B2B Growth Agency</title>
-  <meta name="description" content="Thel LLC is a B2B growth agency specializing in SEO, AEO, paid media, social media, and email marketing for companies with niche target markets." />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:   #0a0a0a;
-      --dark:   #111111;
-      --accent: #c8a96e;
-      --accent2: #e8c98e;
-      --light:  #141414;
-      --text:   #d4d4d4;
-      --muted:  #888888;
-      --white:  #f0f0f0;
-      --radius: 10px;
-      --shadow: 0 4px 24px rgba(0,0,0,.40);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background: #0a0a0a;
-      line-height: 1.65;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5vw;
-      height: 64px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.25);
-    }
-
-    .nav-logo {
-      font-size: 1.35rem; font-weight: 800; letter-spacing: .04em;
-      color: var(--white); text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--accent); }
-
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav ul a {
-      color: #c9d8e8; text-decoration: none;
-      font-size: .9rem; font-weight: 500;
-      transition: color .2s;
-    }
-    nav ul a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--accent); color: var(--white) !important;
-      padding: .45rem 1.15rem; border-radius: 6px;
-      font-weight: 600 !important; transition: background .2s !important;
-    }
-    .nav-cta:hover { background: #a8853e !important; }
-
-    /* ── HERO ── */
-    #hero {
-      background: linear-gradient(135deg, #000000 0%, #0f0f0f 55%, #111111 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 110px 5vw 90px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 75% 40%, rgba(200,169,110,.10) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 20% 60%, rgba(232,201,142,.07) 0%, transparent 70%);
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: rgba(200,169,110,.12);
-      border: 1px solid rgba(200,169,110,.35);
-      color: #c8a96e;
-      font-size: .8rem; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .35rem 1rem; border-radius: 99px;
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
-
-    #hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 900; line-height: 1.15;
-      max-width: 820px; margin: 0 auto 1.4rem;
-      position: relative;
-    }
-
-    #hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    #hero p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: #888888;
-      max-width: 640px; margin: 0 auto 2.4rem;
-      position: relative;
-    }
-
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
-
-    .btn-primary {
-      background: var(--accent); color: var(--white);
-      padding: .85rem 2rem; border-radius: 8px;
-      font-weight: 700; font-size: 1rem;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: background .2s, transform .15s;
-      display: inline-block;
-    }
-    .btn-primary:hover { background: #a8853e; transform: translateY(-2px); }
-
-    .btn-outline {
-      background: transparent; color: var(--white);
-      border: 2px solid rgba(255,255,255,.3);
-      padding: .85rem 2rem; border-radius: 8px;
-      font-weight: 600; font-size: 1rem;
-      text-decoration: none;
-      transition: border-color .2s, background .2s;
-      display: inline-block;
-    }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
-
-    /* ── SECTION SHELL ── */
-    section { padding: 88px 5vw; }
-    section:nth-child(even) { background: #111111; }
-
-    .section-label {
-      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: .6rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
-      font-weight: 800; line-height: 1.2;
-      color: #f0f0f0;
-      max-width: 660px;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin-top: .75rem;
-    }
-
-    .section-header { margin-bottom: 3rem; }
-    .section-header.center { text-align: center; }
-    .section-header.center .section-title,
-    .section-header.center .section-sub { margin-left: auto; margin-right: auto; }
-
-    /* ── NICHE CALLOUT ── */
-    #niche-callout {
-      background: var(--navy);
-      color: var(--white);
-      text-align: center;
-      padding: 64px 5vw;
-    }
-
-    .callout-box {
-      display: inline-flex; align-items: center; gap: 1.2rem;
-      background: rgba(200,169,110,.08);
-      border: 1px solid rgba(200,169,110,.25);
-      border-radius: var(--radius);
-      padding: 1.4rem 2rem;
-      max-width: 820px;
-      text-align: left;
-    }
-
-    .callout-icon {
-      flex-shrink: 0;
-      color: var(--accent);
-    }
-
-    .callout-box strong {
-      display: block; color: var(--white);
-      font-size: 1.05rem; font-weight: 700; margin-bottom: .35rem;
-    }
-
-    .callout-box p { color: #888888; font-size: .95rem; }
-
-    /* ── SERVICES ── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.6rem;
-    }
-
-    .card {
-      background: #181818;
-      border: 1px solid #2a2a2a;
-      border-radius: var(--radius);
-      padding: 2rem 1.75rem;
-      box-shadow: var(--shadow);
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    section:nth-child(even) .card { background: #181818; }
-
-    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.13); }
-
-    .card-icon {
-      width: 40px; height: 40px;
-      border-radius: 6px;
-      border: 1px solid #2a2a2a;
-      background: #111;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent);
-      margin-bottom: 1.1rem;
-    }
-
-    .card h3 { font-size: 1.1rem; font-weight: 700; color: #f0f0f0; margin-bottom: .6rem; }
-    .card p  { font-size: .93rem; color: var(--muted); line-height: 1.6; }
-
-    .card ul {
-      list-style: none; margin-top: .9rem;
-    }
-
-    .card ul li {
-      font-size: .88rem; color: var(--muted);
-      padding: .28rem 0;
-      display: flex; align-items: flex-start; gap: .5rem;
-    }
-
-    .card ul li::before {
-      content: '✓';
-      color: var(--accent2);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: .05em;
-    }
-
-    /* ── EMAIL SECTION ── */
-    .email-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) { .email-layout { grid-template-columns: 1fr; } }
-
-    .tools-row {
-      display: flex; flex-wrap: wrap; gap: .65rem;
-      margin-top: 1.4rem;
-    }
-
-    .tool-badge {
-      background: #1e1e1e;
-      border: 1px solid #2e2e2e;
-      border-radius: 99px;
-      padding: .35rem .9rem;
-      font-size: .82rem; font-weight: 600; color: #c8a96e;
-    }
-
-    .pipeline-steps { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-
-    .step {
-      display: flex; align-items: flex-start; gap: 1rem;
-    }
-
-    .step-num {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--accent); color: var(--white);
-      font-weight: 800; font-size: .9rem;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step-body strong { display: block; font-weight: 700; color: #f0f0f0; margin-bottom: .2rem; }
-    .step-body span   { font-size: .88rem; color: var(--muted); }
-
-    /* ── FOUNDER ── */
-    .founder-layout {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    @media (max-width: 768px) {
-      .founder-layout { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    .founder-photo-wrap {
-      position: relative;
-    }
-
-    .founder-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 8px;
-      border: 1px solid #2a2a2a;
-      display: block;
-      background: #181818;
-    }
-
-    .founder-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 8px;
-      border: 1px solid #2a2a2a;
-      background: #181818;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #444;
-      font-size: .8rem;
-    }
-
-    .founder-linkedin {
-      display: inline-flex; align-items: center; gap: .45rem;
-      margin-top: 1rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: .85rem; font-weight: 600;
-      transition: opacity .2s;
-    }
-    .founder-linkedin:hover { opacity: .75; }
-
-    .founder-bio h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 800;
-      color: #f0f0f0;
-      margin-bottom: .25rem;
-    }
-
-    .founder-role {
-      color: var(--accent);
-      font-size: .9rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-
-    .founder-bio p {
-      color: var(--muted);
-      font-size: .97rem;
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-
-    /* ── CLIENT LOGOS ── */
-    .clients-strip {
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid #1e1e1e;
-    }
-
-    .clients-label {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #444;
-      margin-bottom: 1.5rem;
-    }
-
-    .clients-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem 1rem;
-      align-items: center;
-    }
-
-    .client-logo {
-      display: inline-block;
-      padding: .45rem 1.1rem;
-      border: 1px solid #222;
-      border-radius: 5px;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      color: #666;
-      text-decoration: none;
-      transition: border-color .2s, color .2s;
-      white-space: nowrap;
-    }
-
-    .client-logo:hover {
-      border-color: #3a3a3a;
-      color: #999;
-    }
-
-    /* ── WHY US ── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .why-card {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-radius: var(--radius);
-      background: #181818;
-      border: 1px solid #2a2a2a;
-      box-shadow: var(--shadow);
-    }
-
-    .why-card .big { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: .3rem; }
-    .why-card p    { font-size: .9rem; color: var(--muted); }
-
-    /* ── CTA BANNER ── */
-    #cta {
-      background: linear-gradient(135deg, #1a1510 0%, #0d0d0d 100%);
-      border-top: 1px solid #2a2a2a;
-      color: var(--white);
-      text-align: center;
-      padding: 80px 5vw;
-    }
-
-    #cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: .8rem; }
-    #cta p  { font-size: 1.05rem; opacity: .88; max-width: 540px; margin: 0 auto 2rem; }
-
-    .btn-white {
-      background: var(--accent); color: #0a0a0a;
-      padding: .9rem 2.2rem; border-radius: 8px;
-      font-weight: 800; font-size: 1rem;
-      text-decoration: none; display: inline-block;
-      transition: opacity .2s, transform .15s;
-    }
-    .btn-white:hover { background: #a8853e; opacity: 1; transform: translateY(-2px); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: #7a95ac;
-      text-align: center;
-      padding: 2.4rem 5vw;
-      font-size: .85rem;
-    }
-    footer strong { color: var(--white); }
-
-    /* ── MOBILE NAV ── */
-    @media (max-width: 640px) {
-      nav ul { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THEL — Tactical High Energy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --off-black: #0f0f0f;
+    --dark: #141414;
+    --mid: #1e1e1e;
+    --border: #2a2a2a;
+    --muted: #555;
+    --dim: #888;
+    --light: #c8c0b0;
+    --cream: #e8e0d0;
+    --gold: #b8965a;
+    --gold-bright: #d4aa6a;
+    --white: #f4f0ea;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(184,150,90,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(184,150,90,0.4);
+    padding: 10px 24px;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(184,150,90,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(184,150,90,0.03) 0%, transparent 50%);
+  }
+
+  /* Laser beam animation */
+  .laser-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .laser-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,150,90,0.6), transparent);
+    animation: laserSweep 8s ease-in-out infinite;
+    opacity: 0;
+  }
+  .laser-line:nth-child(1) { width: 60%; top: 30%; animation-delay: 0s; }
+  .laser-line:nth-child(2) { width: 40%; top: 55%; animation-delay: 2.5s; }
+  .laser-line:nth-child(3) { width: 75%; top: 72%; animation-delay: 5s; }
+
+  @keyframes laserSweep {
+    0% { opacity: 0; transform: translateX(-100%); }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(150%); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 180px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.6s;
+    max-width: 900px;
+  }
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 26px);
+    font-style: italic;
+    color: var(--light);
+    margin-top: 40px;
+    max-width: 560px;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hero-actions {
+    margin-top: 60px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.2s;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-bright);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .hero-scroll {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-scroll::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
+    display: block;
+  }
+
+  .hero-right {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards 1.5s;
+  }
+
+  .hero-stat {
+    text-align: right;
+    border-right: 1px solid var(--border);
+    padding-right: 24px;
+  }
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 60px;
+    margin: 20px 0;
+  }
+  .section-divider::before, .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 120px 60px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 90px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  /* MANIFESTO */
+  #manifesto {
+    background: var(--off-black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #manifesto::before {
+    content: 'THEL';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 400px;
+    color: rgba(184,150,90,0.025);
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1200px;
+  }
+
+  .manifesto-left .section-title {
+    margin-bottom: 48px;
+  }
+
+  .manifesto-body {
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--light);
+    font-style: italic;
+  }
+
+  .manifesto-body p + p { margin-top: 24px; }
+
+  .manifesto-body strong {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .manifesto-right {
+    padding-top: 20px;
+  }
+
+  .acronym-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid var(--border);
+    padding-left: 48px;
+  }
+
+  .acronym-row {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .acronym-row:first-child { padding-top: 0; }
+  .acronym-row.visible { opacity: 1; transform: translateX(0); }
+
+  .acronym-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .acronym-content {}
+  .acronym-word {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    line-height: 1;
+  }
+  .acronym-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--dim);
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* CAPABILITIES */
+  #capabilities {
+    background: var(--black);
+  }
+
+  .capabilities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+
+  .capabilities-intro {
+    max-width: 400px;
+    font-size: 17px;
+    color: var(--dim);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .cap-card {
+    background: var(--off-black);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
+  }
+  .cap-card.visible { opacity: 1; transform: translateY(0); }
+  .cap-card:hover { background: var(--dark); }
+
+  .cap-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .cap-card:hover::before { transform: scaleX(1); }
+
+  .cap-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+    opacity: 0.7;
+  }
+
+  .cap-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  .cap-desc {
+    font-size: 16px;
+    color: var(--dim);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .cap-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .cap-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+  }
+
+  /* WHO WE SERVE */
+  #serve {
+    background: var(--off-black);
+    position: relative;
+  }
+
+  .serve-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 120px;
+    align-items: start;
+    margin-top: 80px;
+  }
+
+  .serve-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .serve-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: default;
+    transition: padding-left 0.3s ease;
+  }
+  .serve-item:first-child { border-top: 1px solid var(--border); }
+  .serve-item:hover { padding-left: 16px; }
+
+  .serve-item-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    transition: color 0.3s;
+  }
+  .serve-item:hover .serve-item-title { color: var(--gold); }
+
+  .serve-item-sub {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .serve-statement {
+    font-size: clamp(22px, 2.5vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--light);
+  }
+  .serve-statement strong {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* PHILOSOPHY */
+  #philosophy {
+    background: var(--black);
+    text-align: center;
+  }
+
+  .philosophy-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--white);
+    margin: 60px 0;
+    position: relative;
+  }
+  .philosophy-quote::before {
+    content: '"';
+    font-size: 200px;
+    color: rgba(184,150,90,0.08);
+    position: absolute;
+    top: -60px;
+    left: -40px;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .philosophy-pillars {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 80px;
+  }
+
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pillar-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .pillar-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+  .pillar-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    max-width: 120px;
+    line-height: 1.5;
+  }
+
+  /* CTA */
+  #contact {
+    background: var(--off-black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(184,150,90,0.05), transparent);
+  }
+
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-inner .section-label {
+    justify-content: center;
+  }
+  .contact-inner .section-label::before { display: none; }
+
+  .contact-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 24px 0;
+  }
+  .contact-title span { color: var(--gold); }
+
+  .contact-sub {
+    font-size: 19px;
+    font-style: italic;
+    color: var(--dim);
+    line-height: 1.6;
+    margin-bottom: 60px;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 20px 56px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-btn:hover {
+    background: var(--gold-bright);
+    letter-spacing: 0.35em;
+  }
+
+  .contact-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 24px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.15em;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-legal {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* Utility */
+  .gold { color: var(--gold); }
+</style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">Thel<span>.</span></a>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#founder">About</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#cta" class="nav-cta">Let's Talk</a></li>
+  <a href="#hero" class="nav-logo">TH<span>E</span>L</a>
+  <ul class="nav-links">
+    <li><a href="#manifesto">About</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
   </ul>
+  <a href="https://calendly.com/thelagency" target="_blank" class="nav-cta">Engage</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-tag">B2B Growth Agency</div>
-  <h1>We grow B2B businesses in<br/><em>niche, hard-to-reach markets</em></h1>
-  <p>
-    When your entire addressable market is 5,000 facility managers or a handful of
-    procurement leads, generic marketing fails. Thel LLC builds precision growth
-    programs that find, nurture, and convert the right buyers — every time.
-  </p>
-  <div class="hero-btns">
-    <a href="#cta" class="btn-primary">Book a Free Strategy Call</a>
-    <a href="#services" class="btn-outline">See Our Services</a>
+  <div class="hero-bg"></div>
+  <div class="laser-lines">
+    <div class="laser-line"></div>
+    <div class="laser-line"></div>
+    <div class="laser-line"></div>
+  </div>
+
+  <div class="hero-eyebrow">Tactical · High Energy · Precision</div>
+  <h1 class="hero-title">We go<br>where<br><span class="gold">others</span><br>don't.</h1>
+  <p class="hero-sub">Precision strategy deployed at the intersection of capital, growth, and influence.</p>
+
+  <div class="hero-actions">
+    <a href="https://calendly.com/thelagency" target="_blank" class="btn-primary"><span>Request a conversation</span></a>
+    <div class="hero-scroll">Explore</div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-num">∞</div>
+      <div class="hero-stat-label">Surface Area</div>
+    </div>
+    <div class="hero-stat" style="margin-top:24px;">
+      <div class="hero-stat-num">01</div>
+      <div class="hero-stat-label">Focus</div>
+    </div>
   </div>
 </section>
 
-<!-- NICHE CALLOUT -->
-<div id="niche-callout">
-  <div class="callout-box">
-    <div class="callout-icon">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
-        <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
-        <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
-      </svg>
-    </div>
-    <div>
-      <strong>Built for small total-addressable markets</strong>
-      <p>
-        Selling a specialized industrial product to 4,000 facility managers? Targeting 600
-        regional procurement directors? That's exactly where we thrive. We don't need
-        millions of impressions — we need your 5,000 decision-makers to know exactly who
-        you are and why you're the obvious choice.
-      </p>
-    </div>
-  </div>
+<div class="section-divider">
+  <span class="section-divider-text">Est. Chapel Hill, NC</span>
 </div>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-header center">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Full-funnel B2B growth, built for your niche</h2>
-    <p class="section-sub">
-      Every channel we run is calibrated for B2B buying cycles, technical products,
-      and audiences that don't respond to consumer tactics.
-    </p>
-  </div>
-
-  <div class="services-grid">
-
-    <!-- SEO / AEO -->
-    <div class="card">
-      <div class="card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="manifesto-grid">
+    <div class="manifesto-left">
+      <div class="section-label">The Firm</div>
+      <h2 class="section-title">What<br>THEL<br>means.</h2>
+      <div class="manifesto-body" style="margin-top:40px;">
+        <p>Most firms spread wide. We go <strong>deep</strong>. Like a high-energy laser cutting through material others can't penetrate, THEL finds exactly where value is hidden — and extracts it.</p>
+        <p>Whether that means deploying capital, embedding strategy, building a brand from the ground up, or quietly repositioning someone's public presence — we operate with <strong>precision others don't offer</strong>.</p>
+        <p>We don't advertise everything we do. The right clients already understand why.</p>
       </div>
-      <h3>SEO &amp; AEO — Search &amp; Answer Engine Optimization</h3>
-      <p>
-        We get you ranking in Google <em>and</em> in the AI-generated answers your
-        buyers increasingly rely on — even in ultra-niche markets where keyword volume
-        is low but buyer intent is sky-high.
-      </p>
-      <ul>
-        <li>Technical SEO audits &amp; on-page optimization</li>
-        <li>Authoritative content targeting niche buyer queries</li>
-        <li>Structured data &amp; schema for AI answer engines</li>
-        <li>Topical authority in your specific vertical</li>
-        <li>Competitor gap analysis for niche SERPs</li>
-      </ul>
     </div>
 
-    <!-- PAID MEDIA -->
-    <div class="card">
-      <div class="card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="22 12 18 12"/><path d="M6.48 6.88A6 6 0 0 0 6 9v6a6 6 0 0 0 .48 2.12"/>
-          <path d="M18 8.5C18 8.5 22 9 22 12s-4 3.5-4 3.5V8.5z"/>
-          <rect x="2" y="9" width="6" height="6" rx="1"/>
-          <line x1="8" y1="15" x2="6" y2="21"/>
-        </svg>
+    <div class="manifesto-right">
+      <div class="acronym-block">
+        <div class="acronym-row">
+          <div class="acronym-letter">T</div>
+          <div class="acronym-content">
+            <div class="acronym-word">Tactical</div>
+            <div class="acronym-desc">Deliberate. Every move is calculated, every engagement purposeful. No wasted energy.</div>
+          </div>
+        </div>
+        <div class="acronym-row">
+          <div class="acronym-letter">H</div>
+          <div class="acronym-content">
+            <div class="acronym-word">High Energy</div>
+            <div class="acronym-desc">We bring intensity. The kind that accelerates growth, commands attention, and produces results others can't.</div>
+          </div>
+        </div>
+        <div class="acronym-row">
+          <div class="acronym-letter">E</div>
+          <div class="acronym-content">
+            <div class="acronym-word">Engineered</div>
+            <div class="acronym-desc">Strategy built with precision — not guesswork. Systems that compound and scale.</div>
+          </div>
+        </div>
+        <div class="acronym-row">
+          <div class="acronym-letter">L</div>
+          <div class="acronym-content">
+            <div class="acronym-word">Laser</div>
+            <div class="acronym-desc">Focused where it matters. We go deep into a business, a brand, a market — and we don't miss.</div>
+          </div>
+        </div>
       </div>
-      <h3>Paid Media</h3>
-      <p>
-        Precision-targeted paid campaigns that reach the specific job titles,
-        industries, and companies in your market — without wasting budget on
-        irrelevant clicks.
-      </p>
-      <ul>
-        <li>LinkedIn Ads targeting by title, industry &amp; company size</li>
-        <li>Google &amp; Bing search ads for high-intent B2B queries</li>
-        <li>Retargeting sequences for long B2B sales cycles</li>
-        <li>Landing page copy &amp; CRO</li>
-        <li>Full performance reporting &amp; budget optimization</li>
-      </ul>
     </div>
-
-    <!-- SOCIAL MEDIA -->
-    <div class="card">
-      <div class="card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-        </svg>
-      </div>
-      <h3>B2B Social Media</h3>
-      <p>
-        Strategic presence on the platforms where your actual buyers spend time —
-        building credibility and staying top-of-mind across long B2B sales cycles.
-      </p>
-      <ul>
-        <li>LinkedIn organic strategy, posting &amp; content calendar</li>
-        <li>Reddit community engagement in niche industry subreddits</li>
-        <li>Thought leadership &amp; technical commentary for your vertical</li>
-        <li>DM outreach &amp; connection sequences on LinkedIn</li>
-        <li>Monthly analytics &amp; content performance review</li>
-      </ul>
-    </div>
-
-    <!-- EMAIL -->
-    <div class="card">
-      <div class="card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-      </div>
-      <h3>B2B Email Marketing</h3>
-      <p>
-        End-to-end outbound email programs — from building verified prospect lists to
-        sending, reporting, and managing follow-up sequences until meetings are booked.
-      </p>
-      <ul>
-        <li>Prospect list building with Hunter.io, Apollo &amp; more</li>
-        <li>Multi-touch cold email sequences</li>
-        <li>Deliverability management &amp; inbox placement</li>
-        <li>Reply handling &amp; follow-up automation</li>
-        <li>Weekly reporting on opens, replies &amp; pipeline</li>
-      </ul>
-    </div>
-
   </div>
 </section>
 
-<!-- EMAIL DEEP DIVE -->
-<section id="email">
-  <div class="email-layout">
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="capabilities-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Capabilities</h2>
+    </div>
+    <p class="capabilities-intro">We operate across a range of engagements — each one custom, each one confidential.</p>
+  </div>
+
+  <div class="capabilities-grid">
+    <div class="cap-card">
+      <div class="cap-num">01</div>
+      <div class="cap-title">Growth Consulting</div>
+      <p class="cap-desc">We embed in your business, identify the constraints holding revenue back, and deploy the strategy to remove them. Operational, marketing, and structural.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Revenue Strategy</span>
+        <span class="cap-tag">Market Positioning</span>
+        <span class="cap-tag">Scaling</span>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-num">02</div>
+      <div class="cap-title">Brand & Content</div>
+      <p class="cap-desc">From personal brands for high-profile individuals to content engines that generate organic authority — we build presence that compounds over time.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Personal Brand</span>
+        <span class="cap-tag">Content Strategy</span>
+        <span class="cap-tag">SEO / AEO</span>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-num">03</div>
+      <div class="cap-title">Reputation Management</div>
+      <p class="cap-desc">Discreet, effective reputation work for individuals and organizations who require a different kind of attention to their public presence.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Public Presence</span>
+        <span class="cap-tag">Narrative Control</span>
+        <span class="cap-tag">Crisis Advisory</span>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-num">04</div>
+      <div class="cap-title">Capital & Investment</div>
+      <p class="cap-desc">We selectively invest in and acquire stakes in businesses where we see underutilized value. Capital plus strategy, not capital alone.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Business Investment</span>
+        <span class="cap-tag">Equity Partnerships</span>
+        <span class="cap-tag">Holding</span>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-num">05</div>
+      <div class="cap-title">Concierge Advisory</div>
+      <p class="cap-desc">For individuals who require a trusted, discreet strategic partner across business and personal decisions. Not a retainer. A relationship.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">High-Net-Worth</span>
+        <span class="cap-tag">Private Advisory</span>
+        <span class="cap-tag">Lifestyle Strategy</span>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-num">06</div>
+      <div class="cap-title">Performance Marketing</div>
+      <p class="cap-desc">Paid media, SEO, and demand generation that produce measurable pipeline — not vanity metrics. Built for businesses that need real revenue.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Paid Media</span>
+        <span class="cap-tag">Organic Growth</span>
+        <span class="cap-tag">Lead Generation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="serve">
+  <div class="section-label">Clientele</div>
+  <h2 class="section-title">Who We<br>Work With</h2>
+
+  <div class="serve-grid">
+    <div class="serve-list">
+      <div class="serve-item">
+        <div class="serve-item-title">Founders & Operators</div>
+        <div class="serve-item-sub">Businesses with real revenue and real ambition</div>
+      </div>
+      <div class="serve-item">
+        <div class="serve-item-title">High-Net-Worth Individuals</div>
+        <div class="serve-item-sub">Who require discretion and results</div>
+      </div>
+      <div class="serve-item">
+        <div class="serve-item-title">Public Figures</div>
+        <div class="serve-item-sub">Brand, reputation, and narrative work</div>
+      </div>
+      <div class="serve-item">
+        <div class="serve-item-title">Private Investors</div>
+        <div class="serve-item-sub">Co-investment and strategic partnership</div>
+      </div>
+      <div class="serve-item">
+        <div class="serve-item-title">Growth-Stage Companies</div>
+        <div class="serve-item-sub">Ready to scale but missing the mechanism</div>
+      </div>
+    </div>
 
     <div>
-      <div class="section-label">Outbound Email Engine</div>
-      <h2 class="section-title">We build your pipeline — contacts to conversations</h2>
-      <p class="section-sub">
-        We handle everything from sourcing verified contact data to booking meetings
-        on your calendar. You focus on closing; we fill the top of funnel.
-      </p>
-      <div class="tools-row">
-        <span class="tool-badge">Hunter.io</span>
-        <span class="tool-badge">Apollo.io</span>
-        <span class="tool-badge">Instantly</span>
-        <span class="tool-badge">Smartlead</span>
-        <span class="tool-badge">Clay</span>
-        <span class="tool-badge">ZoomInfo</span>
-        <span class="tool-badge">LinkedIn Sales Nav</span>
-      </div>
+      <p class="serve-statement">THEL doesn't work with everyone. We work with people who <strong>understand the value of precision</strong> — and who are ready to move when the right strategy is in front of them.</p>
+      <p class="serve-statement" style="margin-top:40px; font-size: clamp(17px, 1.8vw, 26px); color: var(--muted);">If you're wondering whether we're right for you, the conversation itself will make that clear.</p>
     </div>
-
-    <div class="pipeline-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>Prospect List Building</strong>
-          <span>We source and verify contacts matching your exact ICP — job title, industry, company size, geography, and technology stack.</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Sequence Copywriting</strong>
-          <span>Personalized multi-touch email sequences written for technical B2B buyers — not generic templates.</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>Send, Deliver &amp; Optimize</strong>
-          <span>We manage domain warming, sending infrastructure, and deliverability so your emails land in the inbox, not spam.</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Follow-Ups &amp; Replies</strong>
-          <span>Automated and manual follow-ups handled by us — we respond to interested leads and nurture them until they're ready to talk.</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <strong>Reporting &amp; Iteration</strong>
-          <span>Weekly dashboards on open rates, reply rates, and meetings booked. We iterate copy and targeting every cycle to improve results.</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section id="founder">
-  <div class="founder-layout">
-
-    <div class="founder-photo-wrap">
-      <img src="images/jonathan.jpg" alt="Jonathan Poston" class="founder-photo"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="founder-photo-placeholder" style="display:none">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" style="color:#333">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="philosophy-inner">
+    <div class="section-label" style="justify-content:center;">
+      <span style="width:24px;height:1px;background:var(--gold);display:block;"></span>
+      Philosophy
+    </div>
+    <div class="philosophy-quote">
+      The most powerful force isn't the one that spreads everywhere. It's the one that goes precisely where it's needed.
+    </div>
+    <div class="philosophy-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">◈</div>
+        <div class="pillar-label">Precision</div>
+        <div class="pillar-sub">No wasted motion. Every engagement focused.</div>
       </div>
-      <a href="https://www.linkedin.com/in/jonathanposton/" target="_blank" rel="noopener" class="founder-linkedin">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-        </svg>
-        linkedin.com/in/jonathanposton
-      </a>
-    </div>
-
-    <div class="founder-bio">
-      <div class="section-label">Founder &amp; Agency Owner</div>
-      <h2>Jonathan Poston</h2>
-      <div class="founder-role">B2B Growth Strategist</div>
-      <p>
-        Jonathan Poston is a B2B marketing strategist with over a decade of experience
-        growing businesses in technical, industrial, and logistics markets — the kinds of
-        niches where generic digital marketing falls flat and deep domain expertise is the
-        only thing that moves the needle.
-      </p>
-      <p>
-        He's led SEO, content, and demand generation for companies ranging from specialty
-        logistics providers to HVAC equipment manufacturers, trucking OEMs, and
-        industrial distributors. His approach is built around one insight: when your
-        addressable market is small, every touchpoint has to count.
-      </p>
-      <p>
-        Thel LLC is the agency he built to bring that precision to more B2B companies
-        who need real pipeline, not vanity metrics.
-      </p>
-
-      <div class="clients-strip">
-        <div class="clients-label">Companies &amp; brands worked with</div>
-        <div class="clients-row">
-          <a href="https://redstagfulfillment.com" target="_blank" rel="noopener" class="client-logo">Red Stag Fulfillment</a>
-          <a href="https://tranetechnologies.com" target="_blank" rel="noopener" class="client-logo">Trane Technologies</a>
-          <a href="https://freightliner.com" target="_blank" rel="noopener" class="client-logo">Freightliner</a>
-          <a href="https://www.demanddetroit.com/engines" target="_blank" rel="noopener" class="client-logo">Demand Detroit Engines</a>
-          <a href="https://getmapleair.com" target="_blank" rel="noopener" class="client-logo">Maple Air</a>
-        </div>
+      <div class="pillar">
+        <div class="pillar-icon">⟡</div>
+        <div class="pillar-label">Depth</div>
+        <div class="pillar-sub">We go further than anyone else will.</div>
       </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why">
-  <div class="section-header center">
-    <div class="section-label">Why Thel</div>
-    <h2 class="section-title">Focused on B2B. Obsessed with niche markets.</h2>
-    <p class="section-sub">
-      We don't split our attention between B2C campaigns and brand awareness fluff.
-      Every client we work with is a B2B company selling something specific, often
-      technical, to a very defined audience.
-    </p>
-  </div>
-
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="big">100%</div>
-      <p>B2B focus — no consumer campaigns, no brand fluff</p>
-    </div>
-    <div class="why-card">
-      <div class="big">4–6×</div>
-      <p>Channels working together: SEO, AEO, paid, social &amp; email</p>
-    </div>
-    <div class="why-card">
-      <div class="big">Niche</div>
-      <p>Experts at marketing to small, specific buyer audiences</p>
-    </div>
-    <div class="why-card">
-      <div class="big">Full</div>
-      <p>End-to-end execution — strategy, build, send, report, optimize</p>
+      <div class="pillar">
+        <div class="pillar-icon">◇</div>
+        <div class="pillar-label">Discretion</div>
+        <div class="pillar-sub">What happens here stays here.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">△</div>
+        <div class="pillar-label">Results</div>
+        <div class="pillar-sub">Revenue, growth, influence. Measurable.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="cta">
-  <h2>Ready to grow your B2B pipeline?</h2>
-  <p>
-    Tell us who your buyers are. We'll show you exactly how we'd reach them —
-    whether there are 500 of them or 50,000.
-  </p>
-  <a href="https://calendly.com/thelagency" target="_blank" rel="noopener" class="btn-white">Book a Free Strategy Call →</a>
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Begin</div>
+    <h2 class="contact-title">Let's<br><span>Talk.</span></h2>
+    <p class="contact-sub">The first conversation is a calibration. We'll know quickly if there's a fit — and if there is, we move fast.</p>
+    <a href="https://calendly.com/thelagency" target="_blank" class="contact-btn">Request a Conversation</a>
+    <p class="contact-note">All inquiries treated with discretion</p>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Thel LLC</strong> &mdash; B2B Growth Agency</p>
-  <p style="margin-top:.5rem;">
-    &copy; <span id="yr"></span> Thel LLC. All rights reserved.
-  </p>
+  <div class="footer-logo">TH<span>E</span>L <span style="font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.1em;">LLC</span></div>
+  <div class="footer-legal">© THEL LLC. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#manifesto">About</a>
+    <a href="#capabilities">Work</a>
+    <a href="https://calendly.com/thelagency" target="_blank">Contact</a>
+  </div>
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-</script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
 
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2)';
+      ring.style.width = '48px';
+      ring.style.height = '48px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+    });
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.acronym-row, .cap-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
